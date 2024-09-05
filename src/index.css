@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #fadbf2;
+  color:darkslategray;
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
+}
+
+.wrapper {
+  width: 900px;
+  margin: 50px auto;
+}
+
+header{
+  position: relative;
+}
+
+header div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .logo {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+header ul.nav {
+  display: flex;
+  float: right;
+  list-style: none;
+}
+
+header ul.nav li{
+  display: inline-block;
+  margin-left: 25px;
+  cursor: pointer;
+}
+
+header ul.nav li:hover {
+  /* opacity: 0.7; */
+  color: #ef0f83;
+  font-weight: 500;
+}
+
+header .shop-card-button{
+  /* float: right; */
+  
+  margin-left: 60%;
+  cursor: pointer;
+  transition: color, scale 500ms ease;
+}
+
+header .shop-card-button:hover,
+header .shop-card-button.active{
+  color: #ef0f83;
+  transform: scale(1.5);
+}
+
+header .shop-card{
+  position: absolute;
+  top: 30px;
+  right: 0;
+  width: 450px;
+  min-height: 100px;
+  background: #f9cde8;
+  -webkit-box-shadow: 10px 10px 15px -2px rgba(115,31,115,0.75);
+  -moz-box-shadow: 10px 10px 15px -2px rgba(115,31,115,0.75);
+  box-shadow: 10px 10px 15px -2px rgba(115,31,115,0.75);
+  z-index: 1000;
+}
+
+header .presentation {
+  margin: 30px 0;
+  background:url('./img/maxres.jpg');
+  height: 300px;
+  /* overflow: hidden; */
+  width: 100%; /* Адаптує ширину картинки до ширини контейнера */
+  background-size: cover; /* Зберігає співвідношення сторін, заповнюючи весь контейнер */
+  background-position: center center;
+  border: 2px ridge #eaa1fb;
+  background-blend-mode: multiply;
+  background-color: #f0dcf4;
+  position: relative;
+}
+
+header .presentation:after{
+  content: 'The best products for your home!';
+  position:absolute;
+  top: 130px;
+  left: 160px;
+  font-size: 40px;
+  font-weight: 600;
+  color:white;
+  text-shadow: rgb(255, 0, 187) 1px 0 10px;
+}
+
+main{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+main .item{
+  width: 30%;
+  margin-bottom: 50px;
+  background: #fcf2fa;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+main .item img{
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  transition: transform 500ms ease;
+}
+
+main .item img:hover{
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+main h2, p, b{
+  margin: 10px 20px;
+  color:#2e0337;
+}
+
+main b{
+  color:teal;
+}
+
+.add-to-cart{
+  position:absolute;
+  right: 20px;
+  bottom: 20px;
+  background:#a4247b;
+  width: 30px;
+  height: 30px;
+  color:#f0dcf4;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight:bold;
+  font-size: 25px;
+  transition: transform 500ms ease;
+}
+
+.add-to-cart:hover{
+  transform: scale(1.5) translateY(3px);
+}
+
+footer{
+  text-align: center;
+  margin-top: 10px;
+}
