@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
-*{
+* {
   margin: 0;
   padding: 0;
 }
 
 body {
   background: #fadbf2;
-  color:darkslategray;
+  color: darkslategray;
   font-family: "Playfair Display", serif;
   font-weight: 400;
 }
@@ -17,7 +17,7 @@ body {
   margin: 50px auto;
 }
 
-header{
+header {
   position: relative;
 }
 
@@ -27,63 +27,212 @@ header div {
   justify-content: space-between;
 }
 
-header .logo {
-  font-weight: 600;
-  font-size: 20px;
+header .mylogo {
+  font-weight: 500;
+  font-size: 35px;
+  font-family: Edwardian Script ITC;
 }
 
 header ul.nav {
   display: flex;
-  float: right;
   list-style: none;
 }
 
-header ul.nav li{
+header ul.nav li {
   display: inline-block;
   margin-left: 25px;
   cursor: pointer;
 }
 
 header ul.nav li:hover {
-  /* opacity: 0.7; */
   color: #ef0f83;
   font-weight: 500;
 }
 
-header .shop-card-button{
-  /* float: right; */
-  
-  margin-left: 60%;
+/* Збільшено розмір іконки кошика в 4 рази */
+header .shop-card-button {
+  margin-left: 2%;
   cursor: pointer;
   transition: color, scale 500ms ease;
+  font-size: 2rem; /* збільшено розмір іконки */
 }
 
 header .shop-card-button:hover,
-header .shop-card-button.active{
+header .shop-card-button.active {
   color: #ef0f83;
   transform: scale(1.5);
 }
 
-header .shop-card{
+header .shop-card {
   position: absolute;
   top: 30px;
   right: 0;
-  width: 450px;
+  width: 460px;
   min-height: 100px;
-  background: #f9cde8;
+  background: #fde1ee;
   -webkit-box-shadow: 10px 10px 15px -2px rgba(115,31,115,0.75);
   -moz-box-shadow: 10px 10px 15px -2px rgba(115,31,115,0.75);
   box-shadow: 10px 10px 15px -2px rgba(115,31,115,0.75);
   z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+header .shop-card-empty {
+  position: absolute;
+  padding-top: 25px;
+  top: 20px;
+  right: 0;
+  width: 460px;
+  min-height: 100px;
+  background: #fde1ee;
+  -webkit-box-shadow: 10px 10px 15px -2px rgba(115,31,115,0.75);
+  -moz-box-shadow: 10px 10px 15px -2px rgba(115,31,115,0.75);
+  box-shadow: 10px 10px 15px -2px rgba(115,31,115,0.75);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+header .shop-card .item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+header .shop-card .item img {
+  width: 70px;
+  margin-right: 20px;
+  padding-left: 10px;
+}
+
+header .shop-card .item h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+header .shop-card .item b {
+  font-weight: 900;
+  color: #7b1a5d;
+}
+
+header .shop-card .item .delete-item {
+  cursor: pointer;
+  transition: color, scale 500ms ease;
+  margin-left: auto;
+  margin-right: 12px;
+}
+
+header .shop-card .item .delete-item:hover {
+  color: #cf0e0e;
+  transform: scale(1.5);
+}
+
+header .shop-card .summa {
+  width: 90%;
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.basket-container {
+  /* display: flex;
+  justify-content: flex-end; */
+  margin-left: 20px;
+}
+
+.item-count {
+  position: absolute;
+  top: -12px;
+  right: 370px;
+  background-color: #ef0f83;
+  color: white;
+  border-radius: 50%;
+  padding: 0px 6px 2px 6px;
+  font-size: 12px;
+}
+
+button {
+  padding: 0.6em 1em;
+  border: none;
+  outline: none;
+  color: darkslategray;
+  background: #fadbf2;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-left: 17px;
+}
+
+button:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #ff0095,
+    #f798cb,
+    #ff0088,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-button-85 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-button-85 {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+button:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #fac5ec;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+header .space {
+  margin-left: 5px;
 }
 
 header .presentation {
   margin: 30px 0;
-  background:url('./img/maxres.jpg');
+  background: url('./img/maxres.jpg');
   height: 300px;
-  /* overflow: hidden; */
-  width: 100%; /* Адаптує ширину картинки до ширини контейнера */
-  background-size: cover; /* Зберігає співвідношення сторін, заповнюючи весь контейнер */
+  width: 100%;
+  background-size: cover;
   background-position: center center;
   border: 2px ridge #eaa1fb;
   background-blend-mode: multiply;
@@ -91,18 +240,88 @@ header .presentation {
   position: relative;
 }
 
-header .presentation:after{
+header .presentation:after {
   content: 'The best products for your home!';
-  position:absolute;
+  position: absolute;
   top: 130px;
   left: 160px;
   font-size: 40px;
   font-weight: 600;
-  color:white;
+  color: white;
   text-shadow: rgb(255, 0, 187) 1px 0 10px;
 }
 
-main{
+.Lucida{
+  font-family: Lucida Calligraphy;
+}
+
+/* Стилі для модального вікна */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  color: #840505;
+}
+
+.modal {
+  background: #fcdcf2;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal h2 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+/* Вирівнювання кнопок в модальному вікні в один ряд */
+.modal-buttons {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.modal-buttons button {
+  flex: 1;
+  margin: 0 5px;
+}
+
+button {
+  align-self: center;
+  font-family: "Playfair Display", serif;
+}
+
+main {
   display: flex;
   width: 100%;
   flex-wrap: wrap;
