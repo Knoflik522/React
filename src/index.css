@@ -49,18 +49,17 @@ header ul.nav li:hover {
   font-weight: 500;
 }
 
-/* Збільшено розмір іконки кошика в 4 рази */
 header .shop-card-button {
   margin-left: 2%;
   cursor: pointer;
   transition: color, scale 500ms ease;
-  font-size: 2rem; /* збільшено розмір іконки */
+  font-size: 3rem; 
 }
 
 header .shop-card-button:hover,
 header .shop-card-button.active {
   color: #ef0f83;
-  transform: scale(1.5);
+  transform: scale(1.2);
 }
 
 header .shop-card {
@@ -147,7 +146,7 @@ header .shop-card .summa {
 .item-count {
   position: absolute;
   top: -12px;
-  right: 370px;
+  right: 380px;
   background-color: #ef0f83;
   color: white;
   border-radius: 50%;
@@ -377,6 +376,54 @@ main b{
 
 .add-to-cart:hover{
   transform: scale(1.5) translateY(3px);
+}
+
+.full-item{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(47, 1, 35, 0.853);
+  z-index: 9999;
+  overflow: auto;
+}
+
+.full-item img {
+  width: 350px;
+  border-radius: 12px;
+}
+
+.full-item img:hover{
+  transform: scale(1.05);
+  cursor: pointer;
+
+}
+
+.full-item > div {
+  width: 350px;
+  position: relative;
+  margin: 10% auto;
+  padding: 30px;
+  background: #f9a2da;
+  border-radius: 9px;
+}
+.full-item h2 {
+  text-align: center;
+  color:#480303;
+}
+
+.comments-section{
+  font-family: Bell MT;
+}
+form{
+  display: flex;
+  align-items: center; 
+  gap: 10px; 
+}
+
+input[type="text"] {
+  flex-grow: 1; 
 }
 
 footer{

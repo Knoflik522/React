@@ -43,7 +43,7 @@ export default function Header({ orders, onDelete, isLoggedIn, onLogin, onLogout
                     <FaBasketShopping 
                         onClick={() => setCartOpen(!cartOpen)} 
                         className={`shop-card-button ${cartOpen && 'active'}`} 
-                        style={{ fontSize: '4em' }} // Збільшення розміру іконки
+                        
                     />
                     {itemCount > 0 && <span className="item-count">{itemCount}</span>}
                 </div>
