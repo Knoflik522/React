@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaBasketShopping } from "react-icons/fa6";
 import Order from './Order';
+import useLogState from '../hooks/useLogState'; // Власний хук для логування стану
 
 const showOrders = ({ orders, onDelete }) => {
     let summa = 0;
-    orders.forEach(el => summa += Number.parseFloat(el.price)); 
+    orders.forEach(el => summa += Number.parseFloat(el.price));
     return (
         <div className='shop-card'>
             {orders.map(el => (
@@ -23,9 +24,28 @@ const showNothing = () => {
     );
 };
 
-export default function Header({ orders, onDelete, isLoggedIn, onLogin, onLogout, username }) {
+export default function Header({ orders, onDelete, isLoggedIn: initialLoggedIn, onLogin, onLogout, username }) {
     const [cartOpen, setCartOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(initialLoggedIn); // Локальний стан для логіну
     const itemCount = orders.length;
+
+    // Логування стану кошика
+    useLogState(orders);
+
+    // useEffect із залежністю для відстеження кількості замовлень
+    useEffect(() => {
+        console.log(`Кількість товарів у кошику: ${itemCount}`);
+    }, [itemCount]);
+
+    const handleLogin = () => {
+        setIsLoggedIn(true); 
+        if (onLogin) onLogin(); 
+    };
+
+    const handleLogout = () => {
+        setIsLoggedIn(false); 
+        if (onLogout) onLogout(); 
+    };
 
     return (
         <header>
@@ -34,16 +54,15 @@ export default function Header({ orders, onDelete, isLoggedIn, onLogin, onLogout
 
                 {/* Відображаємо кнопку залежно від стану логіну */}
                 {isLoggedIn ? (
-                    <button onClick={onLogout}>Logout ({username})</button>
+                    <button onClick={handleLogout}>Logout {username}</button>
                 ) : (
-                    <button onClick={onLogin}>Login</button>
+                    <button onClick={handleLogin}>Login</button>
                 )}
 
                 <div className="basket-container">
                     <FaBasketShopping 
                         onClick={() => setCartOpen(!cartOpen)} 
                         className={`shop-card-button ${cartOpen && 'active'}`} 
-                        
                     />
                     {itemCount > 0 && <span className="item-count">{itemCount}</span>}
                 </div>
